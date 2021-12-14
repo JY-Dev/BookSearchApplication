@@ -1,4 +1,4 @@
-package com.jydev.booksearchapplication.ui.search.adapter
+package com.jydev.booksearchapplication.ui.searchbooks.adapter
 
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide

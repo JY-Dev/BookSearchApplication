@@ -1,4 +1,4 @@
-package com.jydev.booksearchapplication.ui.search
+package com.jydev.booksearchapplication.ui.searchbooks
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

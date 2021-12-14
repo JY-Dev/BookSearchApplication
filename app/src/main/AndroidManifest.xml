@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BookSearchApplication">
         <activity
-            android:name=".ui.search.MainActivity"
+            android:name=".ui.searchbooks.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
