@@ -1,4 +1,4 @@
-package com.jydev.booksearchapplication.ui.adapter
+package com.jydev.booksearchapplication.ui.search.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
