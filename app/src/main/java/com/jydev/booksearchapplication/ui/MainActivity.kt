@@ -3,6 +3,9 @@ package com.jydev.booksearchapplication.ui
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.paging.PagingData
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.DividerItemDecoration.VERTICAL
 import com.jydev.booksearchapplication.databinding.ActivityMainBinding
 import com.jydev.booksearchapplication.ui.adapter.SearchBooksAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -27,13 +30,17 @@ class MainActivity : AppCompatActivity() {
 
     private fun initView() =
         with(binding){
-            searchBooksRecyclerview.adapter = searchBooksAdapter
+            with(searchBooksRecyclerview){
+                adapter = searchBooksAdapter
+                addItemDecoration(DividerItemDecoration(this@MainActivity, VERTICAL))
+            }
         }
 
     private fun initListener() =
         with(binding){
             searchButton.setOnClickListener {
                 val query = searchEditText.text.toString()
+                clearPagingAdapter()
                 searchBooksViewModel.searchBooks(query).observe(this@MainActivity){
                     CoroutineScope(Dispatchers.Main).launch {
                         searchBooksAdapter.submitData(it)
@@ -41,5 +48,11 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+
+    private fun clearPagingAdapter(){
+        CoroutineScope(Dispatchers.Main).launch {
+            searchBooksAdapter.submitData(PagingData.empty())
+        }
+    }
 
 }
