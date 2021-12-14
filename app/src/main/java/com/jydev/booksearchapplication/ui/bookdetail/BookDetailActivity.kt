@@ -1,9 +1,13 @@
 package com.jydev.booksearchapplication.ui.bookdetail
 
+import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Message
+import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
 import com.jydev.booksearchapplication.R
 import com.jydev.booksearchapplication.databinding.ActivityBookDetailBinding
 import com.jydev.booksearchapplication.domain.model.BookDetail
@@ -42,12 +46,30 @@ class BookDetailActivity : AppCompatActivity() {
             bookDetail.setView()
         }
         bookDetailViewModel.errorMessage.observe(this) { errorMessage ->
-
+            errorMessage?.let {
+                showErrorDialog(errorMessage)
+            }
         }
     }
 
     private fun BookDetail.setView() =
-        with(binding){
+        with(binding) {
 
         }
+
+    private fun showErrorDialog(message: String) {
+        AlertDialog.Builder(this)
+            .setTitle(R.string.error_popup)
+            .setMessage(message)
+            .setPositiveButton(R.string.retry,positiveOnClick)
+            .setNegativeButton(R.string.exit,negativeOnClick)
+            .show()
+    }
+
+    private val positiveOnClick = DialogInterface.OnClickListener { _, _ ->
+        getBookDetail()
+    }
+    private val negativeOnClick = DialogInterface.OnClickListener { _, _ ->
+        finish()
+    }
 }
