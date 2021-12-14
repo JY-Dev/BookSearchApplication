@@ -7,10 +7,16 @@ buildscript {
     dependencies {
         classpath "com.android.tools.build:gradle:7.0.0"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.20"
-
+        classpath 'com.google.dagger:hilt-android-gradle-plugin:2.40'
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
+    ext.paging_version = "3.1.0"
+    ext.glide_version = "4.12.0"
+    ext.retrofit_version = "2.9.0"
+    ext.okhttp_version = "4.9.0"
+    ext.coroutines_version = "1.5.2"
+    ext.hilt_version = "2.40"
 }
 
 task clean(type: Delete) {
