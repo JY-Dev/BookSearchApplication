@@ -1,6 +1,6 @@
 package com.jydev.booksearchapplication.remote.model
 
-data class SearchBookResponse(
+data class SearchBooksResponse(
     val books: List<BookResponse>,
     val error: String,
     val page: String,
