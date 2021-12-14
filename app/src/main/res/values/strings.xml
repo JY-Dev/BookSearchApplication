@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">BookSearchApplication</string>
+    <string name="please_input_book_title">책 제목을 입력해주세요</string>
+    <string name="search">검색</string>
 </resources>
