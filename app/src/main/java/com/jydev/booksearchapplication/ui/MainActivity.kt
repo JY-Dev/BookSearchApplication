@@ -26,6 +26,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         initView()
         initListener()
+        observeData()
     }
 
     private fun initView() =
@@ -41,13 +42,17 @@ class MainActivity : AppCompatActivity() {
             searchButton.setOnClickListener {
                 val query = searchEditText.text.toString()
                 clearPagingAdapter()
-                searchBooksViewModel.searchBooks(query).observe(this@MainActivity){
-                    CoroutineScope(Dispatchers.Main).launch {
-                        searchBooksAdapter.submitData(it)
-                    }
-                }
+                searchBooksViewModel.searchBooks(query)
             }
         }
+
+    private fun observeData(){
+        searchBooksViewModel.books.observe(this){
+            CoroutineScope(Dispatchers.Main).launch {
+                searchBooksAdapter.submitData(it)
+            }
+        }
+    }
 
     private fun clearPagingAdapter(){
         CoroutineScope(Dispatchers.Main).launch {
