@@ -1,6 +1,7 @@
 package com.jydev.booksearchapplication.di
 
 import com.jydev.booksearchapplication.domain.repository.BookRepository
+import com.jydev.booksearchapplication.domain.usecase.BookDetailUseCase
 import com.jydev.booksearchapplication.domain.usecase.SearchBooksUseCase
 import dagger.Module
 import dagger.Provides
@@ -16,5 +17,10 @@ object UseCaseModule {
     @ViewModelScoped
     fun provideSearchBooksUseCase(booksRepository: BookRepository) : SearchBooksUseCase =
         SearchBooksUseCase(booksRepository)
+
+    @Provides
+    @ViewModelScoped
+    fun provideBookDetailUseCase(booksRepository: BookRepository) : BookDetailUseCase =
+        BookDetailUseCase(booksRepository)
 
 }
