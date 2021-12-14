@@ -19,15 +19,23 @@ class BookDetailViewModel @Inject constructor(private val bookDetailUseCase: Boo
     private val _errorMessage = MutableLiveData<String?>()
     val errorMessage : LiveData<String?> = _errorMessage
 
-    private fun getBookDetail(bookId : String){
+    private val _bookId = MutableLiveData<String>()
+
+    fun getBookDetail(){
         viewModelScope.launch {
-            when(val networkResult = bookDetailUseCase(bookId)){
-                is NetworkResult.Success -> _bookDetail.value = networkResult.data
-                is NetworkResult.Error -> {
-                    _errorMessage.value = networkResult.message
-                    _errorMessage.value = null
+            _bookId.value?.let { bookId ->
+                when(val networkResult = bookDetailUseCase(bookId)){
+                    is NetworkResult.Success -> _bookDetail.value = networkResult.data
+                    is NetworkResult.Error -> {
+                        _errorMessage.value = networkResult.message
+                        _errorMessage.value = null
+                    }
                 }
             }
         }
+    }
+
+    fun setBookId(bookId : String){
+        _bookId.value = bookId
     }
 }
