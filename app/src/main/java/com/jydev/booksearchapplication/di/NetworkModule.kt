@@ -1,5 +1,6 @@
 package com.jydev.booksearchapplication.di
 
+import com.jydev.booksearchapplication.remote.service.BookService
 import dagger.Provides
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -9,6 +10,11 @@ import javax.inject.Singleton
 
 object NetworkModule {
     private const val BASE_URL = "https://api.itbook.store/"
+
+    @Singleton
+    @Provides
+    fun provideBookService(retrofit: Retrofit) : BookService =
+        retrofit.create(BookService::class.java)
 
     @Singleton
     @Provides
