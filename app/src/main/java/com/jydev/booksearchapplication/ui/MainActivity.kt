@@ -7,6 +7,7 @@ import androidx.paging.PagingData
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.DividerItemDecoration.VERTICAL
 import com.jydev.booksearchapplication.databinding.ActivityMainBinding
+import com.jydev.booksearchapplication.domain.model.Book
 import com.jydev.booksearchapplication.ui.adapter.SearchBooksAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
@@ -48,15 +49,17 @@ class MainActivity : AppCompatActivity() {
 
     private fun observeData(){
         searchBooksViewModel.books.observe(this){
-            CoroutineScope(Dispatchers.Main).launch {
-                searchBooksAdapter.submitData(it)
-            }
+            it.searchBooksAdapterSubmitData()
         }
     }
 
     private fun clearPagingAdapter(){
+        PagingData.empty<Book>().searchBooksAdapterSubmitData()
+    }
+
+    private fun PagingData<Book>.searchBooksAdapterSubmitData(){
         CoroutineScope(Dispatchers.Main).launch {
-            searchBooksAdapter.submitData(PagingData.empty())
+            searchBooksAdapter.submitData(this@searchBooksAdapterSubmitData)
         }
     }
 
