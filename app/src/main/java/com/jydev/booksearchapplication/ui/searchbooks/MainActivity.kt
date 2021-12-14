@@ -1,5 +1,6 @@
 package com.jydev.booksearchapplication.ui.searchbooks
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
@@ -8,6 +9,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.DividerItemDecoration.VERTICAL
 import com.jydev.booksearchapplication.databinding.ActivityMainBinding
 import com.jydev.booksearchapplication.domain.model.Book
+import com.jydev.booksearchapplication.ui.bookdetail.BookDetailActivity
 import com.jydev.booksearchapplication.ui.searchbooks.adapter.SearchBooksAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
@@ -17,8 +19,14 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private val searchBooksViewModel : SearchBooksViewModel by viewModels()
+    private val gotoBookDetail : (String) -> Unit = { bookId ->
+        val intent = Intent(this,BookDetailActivity::class.java).apply {
+            putExtra(BOOK_ID,bookId)
+        }
+        startActivity(intent)
+    }
     private val searchBooksAdapter : SearchBooksAdapter by lazy {
-        SearchBooksAdapter()
+        SearchBooksAdapter(gotoBookDetail)
     }
     lateinit var binding : ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -63,4 +71,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    companion object{
+        const val BOOK_ID = "book_id"
+    }
 }
