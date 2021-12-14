@@ -1,7 +1,8 @@
-package com.jydev.booksearchapplication
+package com.jydev.booksearchapplication.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.jydev.booksearchapplication.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
