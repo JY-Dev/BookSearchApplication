@@ -3,8 +3,12 @@
     <string name="not_found_book_id">Not Found Book Id</string>
     <string name="please_input_book_title">책 제목을 입력해주세요</string>
     <string name="search">검색</string>
-    <string name="book_name">책이름 :</string>
+    <string name="book_name">책이름</string>
     <string name="error_popup">Error Popup</string>
     <string name="retry">Retry</string>
     <string name="exit">Exit</string>
+    <string name="author">저자</string>
+    <string name="publisher">출판</string>
+    <string name="rating">평점</string>
+    <string name="description">설명</string>
 </resources>

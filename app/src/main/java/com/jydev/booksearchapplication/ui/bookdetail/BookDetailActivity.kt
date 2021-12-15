@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
+import com.bumptech.glide.Glide
 import com.jydev.booksearchapplication.R
 import com.jydev.booksearchapplication.databinding.ActivityBookDetailBinding
 import com.jydev.booksearchapplication.domain.model.BookDetail
@@ -50,7 +51,15 @@ class BookDetailActivity : AppCompatActivity() {
 
     private fun BookDetail.setView() =
         with(binding) {
-
+            Glide.with(this@BookDetailActivity)
+                .load(image)
+                .into(bookImageView)
+            titleTextView.text = title
+            subtitleTextView.text = subtitle
+            publisherTextView.text = publisher
+            authorsTextView.text = authors
+            ratingBar.rating = rating.toFloat()
+            descriptionTextView.text = description
         }
 
     private fun showErrorDialog(message: String) {

@@ -4,6 +4,128 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="20dp"
     tools:context=".ui.bookdetail.BookDetailActivity">
+
+    <ImageView
+        android:id="@+id/book_image_view"
+        android:layout_width="150dp"
+        android:layout_height="180dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/title_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/book_name"
+        android:textStyle="bold"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintStart_toEndOf="@id/book_image_view"
+        app:layout_constraintEnd_toStartOf="@id/title_text_view"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/title_text_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        tools:text="책이에요책이에요책이에요책이에요책이에"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/title_text"
+        app:layout_constraintTop_toTopOf="@id/title_text"/>
+
+    <TextView
+        android:id="@+id/authors_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/author"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/title_text_view"
+        app:layout_constraintStart_toStartOf="@id/title_text"/>
+
+    <TextView
+        android:id="@+id/authors_text_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        tools:text="홍길동"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/title_text_view"
+        app:layout_constraintTop_toTopOf="@id/authors_text"/>
+
+    <TextView
+        android:id="@+id/publisher_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/publisher"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/authors_text_view"
+        app:layout_constraintStart_toStartOf="@id/title_text"/>
+
+    <TextView
+        android:id="@+id/publisher_text_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        tools:text="OOO 출판사"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/title_text_view"
+        app:layout_constraintTop_toTopOf="@id/publisher_text"/>
+
+    <TextView
+        android:id="@+id/subtitle_text_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textSize="12sp"
+        android:maxLines="3"
+        android:ellipsize="end"
+        tools:text="서브 타이틀 입니다서브 타이틀 입니다서브 타이틀 입니다서브 타이틀 입니다"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/publisher_text_view"
+        app:layout_constraintStart_toStartOf="@id/title_text"/>
+
+    <TextView
+        android:id="@+id/rating_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:text="@string/rating"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/book_image_view"/>
+
+    <RatingBar
+        android:id="@+id/rating_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rating_text"/>
+
+    <TextView
+        android:id="@+id/description_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:text="@string/description"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rating_bar"/>
+
+    <TextView
+        android:id="@+id/description_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/description_text"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
