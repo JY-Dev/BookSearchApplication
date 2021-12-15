@@ -3,6 +3,7 @@ package com.jydev.booksearchapplication.ui.searchbooks
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.paging.PagingData
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -59,6 +60,9 @@ class MainActivity : AppCompatActivity() {
         searchBooksViewModel.books.observe(this){
             it.searchBooksAdapterSubmitData()
         }
+        searchBooksViewModel.errorMessage.observe(this){
+            Toast.makeText(this,it,Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun clearPagingAdapter(){
@@ -70,6 +74,7 @@ class MainActivity : AppCompatActivity() {
             searchBooksAdapter.submitData(this@searchBooksAdapterSubmitData)
         }
     }
+
 
     companion object{
         const val BOOK_ID = "book_id"
