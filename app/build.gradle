@@ -55,6 +55,9 @@ dependencies {
     //Coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutines_version"
+
+    testImplementation "androidx.arch.core:core-testing:2.1.0"
 
     //Hilt
     implementation "com.google.dagger:hilt-android:$hilt_version"
