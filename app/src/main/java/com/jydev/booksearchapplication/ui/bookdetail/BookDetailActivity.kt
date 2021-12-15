@@ -44,9 +44,7 @@ class BookDetailActivity : AppCompatActivity() {
             bookDetail.setView()
         }
         bookDetailViewModel.errorMessage.observe(this) { errorMessage ->
-            errorMessage?.let {
-                showErrorDialog(errorMessage)
-            }
+            showErrorDialog(errorMessage)
         }
     }
 

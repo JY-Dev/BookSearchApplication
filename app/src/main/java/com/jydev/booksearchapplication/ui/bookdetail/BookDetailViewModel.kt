@@ -16,8 +16,8 @@ class BookDetailViewModel @Inject constructor(private val bookDetailUseCase: Boo
     private val _bookDetail = MutableLiveData<BookDetail>()
     val bookDetail : LiveData<BookDetail> = _bookDetail
 
-    private val _errorMessage = MutableLiveData<String?>()
-    val errorMessage : LiveData<String?> = _errorMessage
+    private val _errorMessage = MutableLiveData<String>()
+    val errorMessage : LiveData<String> = _errorMessage
 
     private val _bookId = MutableLiveData<String>()
 
@@ -28,7 +28,6 @@ class BookDetailViewModel @Inject constructor(private val bookDetailUseCase: Boo
                     is NetworkResult.Success -> _bookDetail.value = networkResult.data
                     is NetworkResult.Error -> {
                         _errorMessage.value = networkResult.message
-                        _errorMessage.value = null
                     }
                 }
             }
