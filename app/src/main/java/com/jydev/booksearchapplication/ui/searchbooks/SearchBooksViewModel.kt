@@ -8,6 +8,7 @@ import androidx.paging.*
 import com.jydev.booksearchapplication.domain.model.Book
 import com.jydev.booksearchapplication.domain.pagingsource.SearchBooksPagingSource
 import com.jydev.booksearchapplication.domain.usecase.SearchBooksUseCase
+import com.jydev.booksearchapplication.util.SingleLiveEvent
 import com.jydev.booksearchapplication.util.hasNotOperator
 import com.jydev.booksearchapplication.util.hasOrOperator
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -20,7 +21,7 @@ class SearchBooksViewModel @Inject constructor(private val searchBooksUseCase: S
     ViewModel() {
     private var _books: MutableLiveData<PagingData<Book>> = MutableLiveData()
     val books: LiveData<PagingData<Book>> = _books
-    private val _errorMessage = MutableLiveData<String>()
+    private val _errorMessage = SingleLiveEvent<String>()
     val errorMessage: LiveData<String> = _errorMessage
     fun searchBooks(query: String) {
         val queryHasNotOperator = query.hasNotOperator()
