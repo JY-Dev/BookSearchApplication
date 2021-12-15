@@ -37,19 +37,6 @@ class SearchBooksViewModel @Inject constructor(private val searchBooksUseCase: S
         }
     }
 
-    private suspend fun getSearchBooksPager(
-        query: String,
-        withoutPredicate: ((Book) -> Boolean)? = null
-    ) {
-        Pager(
-            PagingConfig(pageSize = 10)
-        ) {
-            SearchBooksPagingSource(searchBooksUseCase, query, withoutPredicate)
-        }.flow.cachedIn(viewModelScope).collect {
-            _books.value = it
-        }
-    }
-
     private fun searchBooksQueryValidation(
         queryHasNotOperator: Boolean,
         queryHasOrOperator: Boolean
@@ -73,6 +60,19 @@ class SearchBooksViewModel @Inject constructor(private val searchBooksUseCase: S
                 " "
             )
             else -> this
+        }
+    }
+
+    private suspend fun getSearchBooksPager(
+        query: String,
+        withoutPredicate: ((Book) -> Boolean)? = null
+    ) {
+        Pager(
+            PagingConfig(pageSize = 10)
+        ) {
+            SearchBooksPagingSource(searchBooksUseCase, query, withoutPredicate)
+        }.flow.cachedIn(viewModelScope).collect {
+            _books.value = it
         }
     }
 
