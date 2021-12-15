@@ -23,8 +23,4 @@ class FakeBookDataSource : BookDataSource {
         }
         bookDetailHashMap
     }
-
-    companion object{
-
-    }
 }
