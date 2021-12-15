@@ -8,7 +8,8 @@ import java.lang.Exception
 
 class SearchBooksPagingSource(
     private val searchBooksUseCase: SearchBooksUseCase,
-    private val query: String
+    private val query: String,
+    private val withoutPredicate : ((Book) -> Boolean)? = null
 ) : PagingSource<Int, Book>() {
     override fun getRefreshKey(state: PagingState<Int, Book>): Int? {
         return state.anchorPosition?.let { anchorPosition ->
@@ -20,8 +21,11 @@ class SearchBooksPagingSource(
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Book> {
         return try {
             val page = params.key ?: 1
-            val books =
+            var books =
                 searchBooksUseCase(query = query, page)
+            withoutPredicate?.let {
+                books = books.filter(it)
+            }
             LoadResult.Page(
                 data = books,
                 prevKey = if (page == 1) null else page.minus(1),
