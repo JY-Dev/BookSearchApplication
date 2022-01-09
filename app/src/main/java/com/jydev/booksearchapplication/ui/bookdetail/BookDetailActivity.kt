@@ -9,8 +9,8 @@ import androidx.appcompat.app.AlertDialog
 import com.bumptech.glide.Glide
 import com.jydev.booksearchapplication.R
 import com.jydev.booksearchapplication.databinding.ActivityBookDetailBinding
-import com.jydev.booksearchapplication.domain.model.BookDetail
 import com.jydev.booksearchapplication.ui.searchbooks.MainActivity
+import com.jydev.domain.model.BookDetail
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

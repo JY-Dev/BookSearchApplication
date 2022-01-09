@@ -1,8 +1,8 @@
 package com.jydev.booksearchapplication.di
 
-import com.jydev.booksearchapplication.domain.repository.BookRepository
-import com.jydev.booksearchapplication.domain.usecase.BookDetailUseCase
-import com.jydev.booksearchapplication.domain.usecase.SearchBooksUseCase
+import com.jydev.domain.repository.BookRepository
+import com.jydev.domain.usecase.BookDetailUseCase
+import com.jydev.domain.usecase.SearchBooksUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

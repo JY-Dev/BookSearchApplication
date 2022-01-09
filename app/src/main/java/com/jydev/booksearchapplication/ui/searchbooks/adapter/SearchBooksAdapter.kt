@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import com.jydev.booksearchapplication.databinding.ItemSearchBooksBinding
-import com.jydev.booksearchapplication.domain.model.Book
+import com.jydev.domain.model.Book
 
 class SearchBooksAdapter(private val gotoBookDetail : (String) -> Unit) : PagingDataAdapter<Book, SearchBooksViewHolder>(diffUtil) {
     override fun onBindViewHolder(holder: SearchBooksViewHolder, position: Int) {

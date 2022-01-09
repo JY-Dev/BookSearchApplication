@@ -9,9 +9,9 @@ import androidx.paging.PagingData
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.DividerItemDecoration.VERTICAL
 import com.jydev.booksearchapplication.databinding.ActivityMainBinding
-import com.jydev.booksearchapplication.domain.model.Book
 import com.jydev.booksearchapplication.ui.bookdetail.BookDetailActivity
 import com.jydev.booksearchapplication.ui.searchbooks.adapter.SearchBooksAdapter
+import com.jydev.domain.model.Book
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

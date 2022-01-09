@@ -4,13 +4,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.paging.*
-import com.jydev.booksearchapplication.domain.model.Book
-import com.jydev.booksearchapplication.domain.pagingsource.SearchBooksPagingSource
-import com.jydev.booksearchapplication.domain.usecase.SearchBooksUseCase
+import androidx.paging.PagingData
+import androidx.paging.cachedIn
 import com.jydev.booksearchapplication.util.SingleLiveEvent
-import com.jydev.booksearchapplication.util.hasNotOperator
-import com.jydev.booksearchapplication.util.hasOrOperator
+import com.jydev.domain.model.Book
+import com.jydev.domain.usecase.SearchBooksUseCase
+import com.jydev.util.hasNotOperator
+import com.jydev.util.hasOrOperator
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -68,13 +68,11 @@ class SearchBooksViewModel @Inject constructor(private val searchBooksUseCase: S
         query: String,
         withoutPredicate: ((Book) -> Boolean)? = null
     ) {
-        Pager(
-            PagingConfig(pageSize = 10)
-        ) {
-            SearchBooksPagingSource(searchBooksUseCase, query, withoutPredicate)
-        }.flow.cachedIn(viewModelScope).collect {
-            _books.value = it
-        }
+        searchBooksUseCase<PagingData<Book>>(query, withoutPredicate)
+            .cachedIn(viewModelScope)
+            .collect {
+                _books.value = it
+            }
     }
 
 }
